@@ -35,8 +35,7 @@
 3. `assortis(X,Y) :- convient_physiquement(X,Y), convient_physiquement(Y,X), ont_meme_gouts(X,Y), ont_meme_gouts(Y,X), X\==Y.` --> Quelque soit X, Y, les noms de deux personnes différentes : on recherche deux personnes X et Y qui ont les mêmes goûts, X plaît physiquement à Y et Y plaît physiquement à X. On dit alors que X et Y sont assortis.
 
 ### 2.4 Attention à ne pas dépasser ! (2 points)
-
-1.On a commencé par instancier les trois couleurs disponibles :
+1. On a commencé par instancier les trois couleurs disponibles :
 couleur(rouge).
 couleur(vert).
 couleur(jaune).
