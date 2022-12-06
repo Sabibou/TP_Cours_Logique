@@ -23,3 +23,18 @@ langage([a|S]):-langage(S).
 % EXO 4.3.3
 langage([]).
 langage([a|[a|S]]):-langage(S).
+
+% EXO 4.3.4
+langage([]).
+langage([a|[a|S]]) :- langage(S).
+
+% EXO 4.3.6
+% pour savoir si la liste est palindrome il faut que l’inverse de la liste soit égale a la liste elle-même
+palindrome(L) :- inverse(L,l)
+
+% EXO 4.3.9
+langagea([a|A]):- langagea(A).
+langagea([]).
+langage([b|S]):- langagea(S).
+langage([a|C]):- langage(C).
+langage([]).
