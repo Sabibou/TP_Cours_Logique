@@ -34,6 +34,15 @@
 --> Quelque soit X, Y, les noms de deux personnes différentes : on compare les goûts de deux personnes identifiés par leurs numéros, et on s'en sert pour récupérer leur nom. Ainsi, X et Y ont les *mêmes goûts*.
 3. `assortis(X,Y) :- convient_physiquement(X,Y), convient_physiquement(Y,X), ont_meme_gouts(X,Y), ont_meme_gouts(Y,X), X\==Y.` --> Quelque soit X, Y, les noms de deux personnes différentes : on recherche deux personnes X et Y qui ont les mêmes goûts, X plaît physiquement à Y et Y plaît physiquement à X. On dit alors que X et Y sont assortis.
 
+### 2.4 Attention à ne pas dépasser ! (2 points)
+
+1.On a commencé par instancier les trois couleurs disponibles :
+couleur(rouge).
+couleur(vert).
+couleur(jaune).
+`coloriage(C1,C2,C3,C4) :- couleur(C1), couleur(C2), couleur(C3), couleur(C4), C1\==C2, C1\==C3, C1\==C4, C2\==C3, C3\==C4.`
+--> on attribue d'abord à chaque case une couleur et on applique ensuite les contraintes exigées (deux cases contiguës ne peuvent pas avoir la même couleur).
+2.
 ---
 ## -----------------------------------FIN DE TP----------------------------------
 ---
