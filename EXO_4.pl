@@ -10,7 +10,10 @@ last(L, [L]).
 last(X, [_|L]):-last(X, L).
 
 % EXO 4.2.4
-addlast(L, X, L1):- append(L,[X],L1).
+addlast (X , [] , [ X ]).
+addlast (X , L , [ L | X ]).
+
+
 
 % EXO 4.2.5
 reverse([],[]).
