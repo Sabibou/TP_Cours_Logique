@@ -36,12 +36,43 @@
 
 ### 2.4 Attention à ne pas dépasser ! (2 points)
 1. On a commencé par instancier les trois couleurs disponibles :
-couleur(rouge).
-couleur(vert).
-couleur(jaune).
+**couleur(rouge).**
+**couleur(vert).**
+**couleur(jaune).**
 `coloriage(C1,C2,C3,C4) :- couleur(C1), couleur(C2), couleur(C3), couleur(C4), C1\==C2, C1\==C3, C1\==C4, C2\==C3, C3\==C4.`
 --> on attribue d'abord à chaque case une couleur et on applique ensuite les contraintes exigées (deux cases contiguës ne peuvent pas avoir la même couleur).
-2.
+2.`coloriage(C1,C2,C3,C4) :- couleur(C1),C1\==C2, C1\==C3, C1\==C4, couleur(C2),C2\==C3, couleur(C3), C3\==C4, couleur(C4).`
+--> dans ce cas, prolog renvoie toutes les possibilités possibles sans prendre en compte la contrainte de ne pas avoir deux mêmes couleurs à côté.
+
+---
+### 3 Graphes et récursivité (7 points)
+---
+
+### 3.1 Introduction (4 points)
+1.`fact(0,1).`
+`  fact(N,R) :- N>0, N1 is N-1, R1 is R*N, fact(N1,R1).`
+--> Ce prédicat calcule la factorielle de N. Ici, R est la variable qui acceuille le résultat de N!. Notre cran d'arrêt est 0!=1. Pour tout N>0, on obtient le résultat de façon récursive.
+2.`somme(0,0).`
+`  somme(N,R) :- N > 0 , N1 is N-1 , somme(N1,R1) ,R is N+R1.`
+--> Ce prédicat calcule la somme des entiers jusqu'à N. Ici, R est la variable qui acceuille le résultat de cette somme. Notre cran d'arrêt est 0. Pour tout N>0, on obtient le résultat de façon récursive.
+3.`fib(1,1).`
+`  fib(2,1).`
+`  fib(N,R):- N>2, N1 is N-1, N2 is N-2, fib(N1,R1), fib(N2,R2), R is R1+R2.`
+--> Ce prédicat calcule F(n) avec F étant la suite de fibonacci. Ici, R est la variable qui acceuille le résultat. Notre cran d'arrêt est F(1)=F(2)=1. Pour tout N>0, on obtient le résultat de façon récursive.
+4.`ackermann(0, N, A) :- A is N +1.`
+`  ackermann(M, 0, A) :- M > 0, M2 is M-1, ackermann(M2, 1, A).`
+`  ackermann(M, N, A) :- M > 0, N > 0, M2 is M - 1, N2 is N-1, ackermann(M,N2,A1), ackermann(M2,A1,A).`
+--> Ce prédicat calcule A(m,n) avec A étant la fonction d'Ackermann et n,m deux entiers positifs. Ici, R est la variable qui acceuille le résultat. Notre cran d'arrêt est : si m=0, A(m,n)=n+1. Pour tout N>0 et M>0, on obtient le résultat de façon récursive.
+
+### 3.2 Graphes dirigés acycliques (3 points)
+1.`chemin-oriente(X,Y) :- arete(X,Y).`
+`  chemin-oriente(X,Y) :- chemin-oriente(X,Z), arete(Z,Y).`
+--> X et Y correspondent à deux points. On cherche à savoir s'il existe un chemin orienté entre eux. Pour cela, on regarde s'il existe une arete allant de X à Y, si ce n'est pas le cas on vérifie s'il existe des points intermédiaires, représentés ici par la variable Z, tel que X va à Z et Z va à Y.
+2.`chemin-orienteN(X,Y,1) :- arete(X,Y).`
+`  chemin-orienteN(X, Y, N):-chemin-orienteN(X, Z, M), M is N-1, arete(Z,Y).`
+`  chemin-orienteN(X,Y,0) :- \+ arete(X,Y).`
+--> on a le même principe que la question d'avant hormis qu'ici on cherche à savoir la longueur du chemin, stockée dans la variable N. Si X va directement à Y alors N=1, sinon à chaque point intermédiaire on incréméente N de 1. Si jamais il n'existe aucun chemin orienté allant de X à Y alors N=0.
+
 
 ---
 ## -------------------------------------------------------FIN DE TP------------------------------------------------------
