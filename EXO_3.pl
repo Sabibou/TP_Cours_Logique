@@ -31,5 +31,4 @@ chemin-orienteN(X,Y,0) :- \+ arete(X,Y).
 chemin(X,Y) :- arete(X,Y).
 chemin(X,Y) :- arete(Y,X).
 chemin(X,Y) :- chemin(X,Z), arete(Z,Y).
-chemin(X,Y) :- chemin(X,Z), arete(Y,Z).
 
