@@ -75,6 +75,11 @@ On a alors le prédicat suivant :
 `  chemin-orienteN(X, Y, N):-chemin-orienteN(X, Z, M), M is N-1, arete(Z,Y).`
 `  chemin-orienteN(X,Y,0) :- \+ arete(X,Y).`
 --> on a le même principe que la question d'avant hormis qu'ici on cherche à savoir la longueur du chemin, stockée dans la variable N. Si X va directement à Y alors N=1, sinon à chaque point intermédiaire on incréméente N de 1. Dans le cas où X=Y, alors on regarde si X est un sommet. La taille du chemin sera alors de 0. Si jamais il n'existe aucun chemin orienté allant de X à Y alors N=0. 
+3.`chemin(X,X):- sommet(X).`
+`  chemin(X,Y) :- arete(X,Y).`
+`  chemin(X,Y) :- arete(Y,X).`
+`  chemin(X,Y) :- chemin(X,Z), arete(Z,Y).`
+-->  ici, l'orientation n'importe pas. On cherche juste à savoir si deux points sont reliés, directement ou à travers d'autres points.
 
 
 ---
