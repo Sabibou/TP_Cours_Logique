@@ -1,43 +1,137 @@
 % EXO 4.2.1
-head(X,[X|_]).
-head(X,[_|CORP]):-head(X,CORP).
+head(X,L):- [X|_]=L.
+
 
 % EXO 4.2.2
-addhead(X,L,L1):-append([X], L, L1).
+addhead(X,L,L1):- L1=[X|L].
 
 % EXO 4.2.3
-last(L, [L]).
-last(X, [_|L]):-last(X, L).
+last1(X,[L]):- X=L.
+last1(X,[_|L]):- last1(X,L).
+
 
 % EXO 4.2.4
-addlast (X , [] , [ X ]).
-addlast (X , L , [ L | X ]).
-
-
+addlast(X , [] , [ X ]).
+addlast(X ,[ T | Q ], [T | Q1]) :- addlast(X, Q, Q1).
 
 % EXO 4.2.5
-reverse([],[]).
-reverse([X|R],L1):-reverse(R,R1),append(R1,[X],L1).
+reverse1([],[]).
+reverse1([X|R],L1):-reverse(R,R1),append(R1,[X],L1).
+
 
 % EXO 4.3.1
-langage([b]).
-langage([a|S]):-langage(S).
+
+% Base : b appartient au code
+% Induction : si S appartient au code alors aS appart au code
+langage1([b]).
+langage1([a|S]):-langage1(S).
+
+%EXO 4.3.2
+
+% Base : a appartient au code
+% Induction : si S appartient au code alors Sb appart au code
+langage2([a]).
+langage2(S1):-addlast(b,S,S1), langage2(S).
 
 % EXO 4.3.3
-langage([]).
-langage([a|[a|S]]):-langage(S).
+
+% Base : mot vide appartient au code
+% Induction : - si S appartient au code alors Sb appart au code
+%             - si S appart au code alors aS appart au code
+
+langage3([]).
+langage3([a|S]):-langage3(S).
+langage3(S1):-addlast(b,S,S1), langage3(S).
+
 
 % EXO 4.3.4
-langage([]).
-langage([a|[a|S]]) :- langage(S).
+
+% Base : mot vide appartient au code
+% Induction : - si S appartient au code alors aaS appart au code
+langage4([]).
+langage4([a|S1]) :- addhead(a,S,S1), langage4(S).
+
+%EXO 4.3.5
+
+% Base : mot vide appartient au code
+% Induction : - si S appartient au code alors aSb appart au code
+langage5([]).
+langage5(S2) :- addhead(a,S1,S2), addlast(b,S,S1),langage5(S).
+
+
 
 % EXO 4.3.6
-% pour savoir si la liste est palindrome il faut que l’inverse de la liste soit égale a la liste elle-même
-palindrome(L) :- inverse(L,l)
 
-% EXO 4.3.9
-langagea([a|A]):- langagea(A).
-langagea([]).
-langage([b|S]):- langagea(S).
-langage([a|C]):- langage(C).
-langage([]).
+% Base : - mot vide appartient au code
+%        -a appert au code
+%        -b appart au code
+% Induction : - si S appartient au code alors aSa appart au code
+%             - si S appartient au code alors bSb appart au code
+palindrome([]).
+palindrome([a]).
+palindrome([b]).
+%palindrome([a,S,a]):-palindrome(S).
+%palindrome([b,S,b]):-palindrome(S).
+palindrome(S2) :- addhead(a,S1,S2), addlast(a,S,S1),palindrome(S).
+palindrome(S2) :- addhead(b,S1,S2), addlast(b,S,S1),palindrome(S).
+
+%EXO 4.3.7
+
+%Base : mot vide appartient au code
+% Induction : - si S appartient au code alors aS appart au code
+%             - si S appartient au code alors Sc appart au code
+%             - si S appartient au code et termine par b alors Sb appartau code
+%            - si S appartient au code et commence par b alors bS
+%            appart au code
+%            -si S est le mot vide alors bS appart au code
+
+langage7([]).
+langage7([b]).
+langage7(S1):-addlast(c,S,S1), langage7(S).
+langage7(S1):-addhead(a,S,S1), langage7(S).
+langage7([b|S1]):-addhead(b,S,S1),langage7(S).
+langage7(S2):-addlast(b,S1,S2), addlast(b,S,S1),langage7(S).
+
+%EXO 4.3.8
+
+%Base : mot vide appartient au code
+% Induction : - si S appartient au code alors aSc appart au code
+%             - si S appartient au code et termine par b alors Sb appartau code
+%            - si S appartient au code et commence par b alors bS
+%            appart au code
+%            -si S est le mot vide alors bS appart au code
+
+langage8([]).
+langage8([b]).
+langage8(S2):-addlast(c,S1,S2), addhead(a,S,S1), langage8(S).
+langage8([b|S1]):-addhead(b,S,S1),langage8(S).
+langage8(S2):-addlast(b,S1,S2), addlast(b,S,S1),langage8(S).
+
+%EXO 4.3.9
+
+%Base : mot vide appartient au code
+% Induction : - si S appartient au code alors aS appart au code
+%             - si S appartient au code alors Sa appartau code
+%            - si S appartient au code et ne contient aucun b alors bS
+%            appart au code
+%            - si S appartient au code et ne contient aucun b alors Sb
+%            appart au code
+langage9([]).
+langage9([b]).
+langage9([a|S]):-langage9(S).
+langage9(S1):-addlast(a,S,S1), langage9(S).
+
+%EXO 4.3.10
+
+%Base : mot vide appartient au code
+% Induction : - si S appartient au code alors aSb appart au code
+%             - si S appartient au code alors bSa appartau code
+langage10([]).
+langage10([a|S1]):-addlast(b,S,S1), langage10(S).
+langage10([b|S1]):-addlast(a,S,S1), langage10(S).
+
+
+
+
+
+
