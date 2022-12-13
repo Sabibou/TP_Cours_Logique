@@ -1,6 +1,6 @@
 # Eldis YMERAJ- #22015179
 # Rodrigo FERREIRA RODRIGUES-#22100697
-# Salman ABIBOU
+# Salman ABIBOU- #21913053
 # `TP LOGIQUE` 
 ---
 ## 2. Requête et base de connaissances (8 points)
@@ -81,7 +81,25 @@ On a alors le prédicat suivant :
 `  chemin(X,Y) :- chemin(X,Z), arete(Z,Y).`
 -->  ici, l'orientation n'importe pas. On cherche juste à savoir si deux points sont reliés, directement ou à travers d'autres points.
 
+---
+### 4 Listes et langages (17 points)
+---
 
+### 4.1 Introduction (1 point)
+1.La réponse est :
+X = a,
+Y = [b, c, d].
+2.Le programme renvoie **false**. Cela s'explique par le fait que la liste contienne plusieurs éléments.
+
+### 4.2 Opérations sur les listes (5 points)
+1.`head(X,L):- [X|_]=L.` --> on renvoie le premier élément de la liste **L**.
+2.`addhead(X,L,L1):- L1=[X|L].` --> on rajoute au début de la liste **L**, la variable X. Cela nous donne une nouvelle liste **L1**.
+3.`last1(X,[L]):- X=L.`
+`last1(X,[_|L]):- last1(X,L).` 
+--> on cherche à renvoyer le dernier élément d'une liste. Pour cela, on procède de manière récursive. On appelle à nouveau le prédicat mais cette fois juste avec le corps de la liste, et ce jusqu'à ce que la liste ne possède qu'un seul élément, que l'on renvoie.
+4.`addlast(X , [] , [ X ]).`
+`addlast(X ,[ T | Q ], [T | Q1]) :- addlast(X, Q, Q1).`
+--> on cherche à ajouter un élément X à la fin d'une liste. Pour cela, on procède encore une fois de façon récursive.
 ---
 ## -------------------------------------------------------FIN DE TP------------------------------------------------------
 ---
