@@ -100,6 +100,7 @@ Y = [b, c, d].
 4.`addlast(X , [] , [ X ]).`
 `addlast(X ,[ T | Q ], [T | Q1]) :- addlast(X, Q, Q1).`
 --> on cherche à ajouter un élément X à la fin d'une liste. Pour cela, on procède encore une fois de façon récursive.
+
 ---
 ## -------------------------------------------------------FIN DE TP------------------------------------------------------
 ---
