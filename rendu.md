@@ -100,7 +100,88 @@ Y = [b, c, d].
 4.`addlast(X , [] , [ X ]).`
 `addlast(X ,[ T | Q ], [T | Q1]) :- addlast(X, Q, Q1).`
 --> on cherche à ajouter un élément X à la fin d'une liste. Pour cela, on procède encore une fois de façon récursive.
+5.`reverse1([],[]).`
+`reverse1([X|R],L1):-reverse(R,R1),append(R1,[X],L1).`
+--> On cherche à retourner une liste donné à l'ordre inverse. Pour cela on a utilisé la fonction append qui permet d'ajouter des éléments d'une liste dans une autre.
 
+### 4.3 Construction inductive et langages (11pt)
+1.**a^n^ b, n dans N** : 
+`langage1([b]).` 
+`langage1([a|S]):-langage1(S).`
+Base : `b` est un mot du code 
+Induction: Si `S` est dans code alors `aS` est un mot du code.
+2.**ab^n^, n dans N** :
+`langage1([a]).` 
+`langage2(S1):-addlast(b,S,S1), langage2(S).`
+Base: `a` est un mot du code.
+Induction: Si `S` est dans code alors `Sb` est un mot du code.
+3.**a^n^ b^m^ et n,m dans N** :
+`langage3([]).`
+`langage3([a|S]):-langage3(S).`
+`langage3(S1):-addlast(b,S,S1), langage3(S).`
+Base: Le mot vide est un mot du code.
+Induction: Si `S` est dans code alors `Sb` est un mot du code,
+Si `S` est dans code alors `aS` est un mot du code.
+4.**a^2n^, n dans N** :
+`langage4([]).`
+`langage4([a|S1]) :- addhead(a,S,S1), langage4(S).`
+Base: Le mot vide est un mot du code.
+Induction: Si `S` est dans code alors `aaS` est dans code.
+5.**a^n^ b^n^, n dans N** :
+`langage5([]).`
+`langage5(S2) :- addhead(a,S1,S2), addlast(b,S,S1),langage5(S).`
+Base: Le mot vide est un mot du code.
+Induction: Si `S` est dans code alors `aSb` est dans code.
+6.**Les palindromes** :
+`palindrome([]).`
+`palindrome([a]).`
+`palindrome([b]).`
+`palindrome(S2) :- addhead(a,S1,S2), addlast(a,S,S1),palindrome(S).`
+`palindrome(S2) :- addhead(b,S1,S2), addlast(b,S,S1),palindrome(S).`
+Base: Le mot vide, a, b sont dans code.
+Induction: Si `S` est dans code alors `aSa` est dans code,
+Si `S` est dans code alors `bSb` est dans code.
+7.**a^l^ b^m^ c^n^ et l,b,m dans N** :
+`langage7([]).`
+`langage7([b]).`
+`langage7(S1):-addlast(c,S,S1), langage7(S).`
+`langage7(S1):-addhead(a,S,S1), langage7(S).`
+`langage7([b|S1]):-addhead(b,S,S1),langage7(S).`
+`langage7(S2):-addlast(b,S1,S2), addlast(b,S,S1),langage7(S).`
+Base: Le mot vide est dans code.
+Induction: Si `S` est dans code alors `aS` est dans code,
+Si `S` est dans code alors `Sc` est dans code,
+Si `S` est dans code et termine par b alors `Sb` est dans code,
+Si `S` est dans code et termine par b alors `bS` est dans code,
+Si `S` est le mot vide alors `bS` est dans code.
+8.**a^m^ b^n^ c^m^ et m,n dans N** :
+`langage8([]).`
+`langage8([b]).`
+`langage8(S2):-addlast(c,S1,S2), addhead(a,S,S1), langage8(S).`
+`langage8([b|S1]):-addhead(b,S,S1),langage8(S).`
+`langage8(S2):-addlast(b,S1,S2), addlast(b,S,S1),langage8(S).`
+Base: Le mot vide est dans code.
+Induction: Si `S` est dans code alors `aSc` est dans code,
+Si `S` est dans code et termine par b alors `Sb` est dans code,
+Si `S` est dans code et commence par b alors `bS` est dans code,
+Si `S` est le mot vide alors `bS` est dans code.
+9.**Tous les monts sur {a,b} contenant au plus un b** :
+`langage9([]).`
+`langage9([b]).`
+`langage9([a|S]):-langage9(S).`
+`langage9(S1):-addlast(a,S,S1), langage9(S).`
+Base: Le mot vide est dans code.
+Induction: Si `S` est dans code alors `aS` est dans code,
+Si `S` est dans code alors `Sa` est dans code,
+Si `S` est dans code et ne contient aucun b alors `bS` est dans code,
+Si `S` est dans code et ne contient aucun b alors `Sb` est dans code.
+10.**Tous les mots ayant le même nombre de a et de b** :
+`langage10([]).`
+`langage10([a|S1]):-addlast(b,S,S1), langage10(S).`
+`langage10([b|S1]):-addlast(a,S,S1), langage10(S).`
+Base: Le mot vide est dans code.
+Induction: Si `S` est dans code alors `aSb` est dans code,
+Si `S` est dans code alors `bSa` est dans code.
 ---
 ## -------------------------------------------------------FIN DE TP------------------------------------------------------
 ---
