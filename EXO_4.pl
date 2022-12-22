@@ -126,9 +126,11 @@ langage9(S1):-addlast(a,S,S1), langage9(S).
 %Base : mot vide appartient au code
 % Induction : - si S appartient au code alors aSb appart au code
 %             - si S appartient au code alors bSa appartau code
-langage10([]).
-langage10([a|S1]):-addlast(b,S,S1), langage10(S).
-langage10([b|S1]):-addlast(a,S,S1), langage10(S).
+count(L,E,N):- include(=(E),L,L2), length(L2,N).
+%include filtre le contenu de L de sorte que dans L2 il n'y a plus que des récurrences de E, on calcule ensuite la taille de L2
+langage10(S) :- count(S,a,N), count(S,b,N2), N==N2. 
+%on compte le nombre de a et de b dans le mot et on regarde si ça correspond
+
 
 
 
