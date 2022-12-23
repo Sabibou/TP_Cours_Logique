@@ -26,7 +26,7 @@
 `frere(X, Y) :- homme(X), parent(Z, X), parent(Z, Y), X\==Y.`--> quelque soit X, Y, Z : X est un homme, Z est un parent de X, Z est aussi un parent d'Y et X est different d'Y. Ce qui implique que X est le frère d'Y.
 5. `cousin(X, Y) :-  homme(X), parent(Z, X), parent(T, Y), frere(Z, T), soeur(T, Z), X\==Y.`-->quelque soit X, Y, Z, T : X est un homme et Z est le parent de X et T est le parent d'Y et Z est le frere de T et T est la soeur de Z d'ou X\==Y implique que X est le cousin d'Y.
 `cousine(X, Y) :- femme(X), parent(Z, X), parent(T, Y), frere(Z, T), soeur(T, Z), X\==Y.`-->quelque soit X, Y, Z, T : X est une femme et Z est le parent de X et T est le parent d'Y et Z est le frere de T et T est la soeur de Z d'ou X\==Y implique que X est la cousine d'Y.
-6.![Voici toutes les relations de parenté entre les personnes sous la forme d'un graphe :](./Relations_de_parente.svg)
+6.![](./Relations_de_parente.svg "Voici toutes les relations de parenté entre les personnes sous la forme d'un graphe")
 ### 2.3 La fin de la solitude (2 points)
 1. `personne(1,sam,180,brun,27).`
 `gout(1,rap,action,basket).`
