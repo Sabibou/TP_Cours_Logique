@@ -13,7 +13,7 @@
 5.  Oui, la réponse a changé--la réponse est `true`.
 6.  La réponse de l’interpréteur montre que les personnes qu'ils boivent de l'eau sont **abdoul**, **simon**, **otto**.
 7.  L’interpréteur donne tout les boissons que boit **simon**.
-8.  boisson ( X ) : - boit (_ , X ).
+8.  `boisson ( X ) : - boit (_ , X ).`
 
 ### 2.2 La famille (3 points)
 1. `mere(X, Y) :- parent(X, Y), femme(X).`--> quelque soit X, Y : X est un parent d'Y et X est une femme. Ce qui implique que X est mère d'Y.
