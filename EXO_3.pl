@@ -1,6 +1,6 @@
 %EXO 3.1.1
 fact(0,1).
-fact(N,R) :- N>0, N1 is N-1, R1 is R*N, fact(N1,R1).
+fact(N,R) :- N>0, M is N-1, fact(M,T), R is N * T.
 
 % EXO 3.1.2
 somme(0,0).
