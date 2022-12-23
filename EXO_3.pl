@@ -27,7 +27,6 @@ chemin_oriente(X,Y) :- chemin_oriente(X,Z), arete(Z,Y).
 chemin_orienteN(X,X,0):- sommet(X).
 chemin_orienteN(X, Y, N):-chemin_orienteN(X, Z, M), N is M+1, arete(Z,Y).
 chemin_orienteN(X,Y,1) :- arete(X,Y).
-chemin_orienteN(X,Y,0) :- \+ arete(X,Y).
 
 % EXO 3.2.3
 chemin(X,X):- sommet(X).
