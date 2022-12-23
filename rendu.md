@@ -124,7 +124,7 @@ Induction: Si `S` est dans code alors `Sb` est un mot du code.
 Base: Le mot vide est un mot du code.   
 Induction: Si `S` est dans code alors `Sb` est un mot du code,  
 Si `S` est dans code alors `aS` est un mot du code.  
-4.**a^2n^, n dans N** :  
+4. **a^2n^, n dans N** :  
 `langage4([]).`  
 `langage4([a|S1]) :- addhead(a,S,S1), langage4(S).`  
 Base: Le mot vide est un mot du code.  
