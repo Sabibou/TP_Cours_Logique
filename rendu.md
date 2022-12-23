@@ -72,7 +72,7 @@ On a alors le prédicat suivant :
 --> X et Y correspondent à deux points. On cherche à savoir s'il existe un chemin orienté entre eux. Pour cela, on regarde s'il existe une arête allant de X à Y ou alors si X=Y on regarde si X est un sommet, si ce n'est pas le cas on vérifie s'il existe des points intermédiaires, représentés ici par la variable Z, tel que X va à Z et Z va à Y.
 2.`chemin-orienteN(X,X) :- sommet(X).`
 `  chemin-orienteN(X,Y,1) :- arete(X,Y).`
-`  chemin-orienteN(X, Y, N):-chemin-orienteN(X, Z, M), M is N-1, arete(Z,Y).`
+`  chemin-orienteN(X, Y, N):-chemin-orienteN(X, Z, M), N is M+1, arete(Z,Y).`
 `  chemin-orienteN(X,Y,0) :- \+ arete(X,Y).`
 --> on a le même principe que la question d'avant hormis qu'ici on cherche à savoir la longueur du chemin, stockée dans la variable N. Si X va directement à Y alors N=1, sinon à chaque point intermédiaire on incréméente N de 1. Dans le cas où X=Y, alors on regarde si X est un sommet. La taille du chemin sera alors de 0. Si jamais il n'existe aucun chemin orienté allant de X à Y alors N=0. 
 3.`chemin(X,X):- sommet(X).`
@@ -176,12 +176,11 @@ Si `S` est dans le code alors `Sa` est dans le code,
 Si `S` est dans  le code et ne contient aucun b alors `bS` est dans le code,
 Si `S` est dans le code et ne contient aucun b alors `Sb` est dans le code.
 10.**Tous les mots ayant le même nombre de a et de b** :
-`langage10([]).`
-`langage10([a|S1]):-addlast(b,S,S1), langage10(S).`
-`langage10([b|S1]):-addlast(a,S,S1), langage10(S).`
-Base: Le mot vide est dans le code.
-Induction: Si `S` est dans le code alors `aSb` est dans le code,
-Si `S` est dans le code alors `bSa` est dans le code.
+`count(L,E,N):- include(=(E),L,L2), length(L2,N).`
+-> Cette fonction **count** calcule le nombre de récurrences N d'un élément E dans une liste L. **include** filtre le contenu de L de sorte que dans L2 il n'y a plus que des récurrences de E, on calcule ensuite la taille de L2 grâce à lenght.
+`langage10(S) :- count(S,a,N), count(S,b,N2), N==N2.` 
+-> on compte le nombre de a et de b dans le mot. Si le nombre est le même alors le mot appartient au langage.
+
 
 ---
 ## -------------------------------------------------------FIN DE TP------------------------------------------------------
