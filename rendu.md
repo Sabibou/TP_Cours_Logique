@@ -16,8 +16,10 @@
 8.  `boisson ( X ) : - boit (_ , X ).`
 
 ### 2.2 La famille (3 points)
-1. `mere(X, Y) :- parent(X, Y), femme(X).`--> quelque soit X, Y : X est un parent d'Y et X est une femme. Ce qui implique que X est mère d'Y.
-`pere(X, Y) :- parent(X, Y), homme(X).`--> quelque soit X, Y : X est un parent d'Y et X est un homme. Ce qui implique que X est père d'Y.
+1. `mere(X, Y) :- parent(X, Y), femme(X).`--> quelque soit X, Y : X est un parent d'Y et X est une femme. Ce qui implique que X est mère d'Y.  
+
+`pere(X, Y) :- parent(X, Y), homme(X).`--> quelque soit X, Y : X est un parent d'Y et X est un homme. Ce qui implique que X est père d'Y.  
+
 2. `fils(X, Y) :- homme(X), parent(Y, X).`--> quelque soit X, Y : X est un homme et Y est un parent de X. Ce qui implique que X est le fils d'Y.
 `fille(X, Y) :- femme(X), pere(Y, X).`--> quelque soit X, Y : X est une famme et Y est un parent de X. Ce qui implique que X est la fille d'Y.
 3. `grandpere(X, Y) :- parent(Z,Y), pere(X,Z).`--> quelque soit X, Y, Z : X est le père de Z et Z est un parent de Y. Ce qui implique que X est le grand-père d'Y. 
