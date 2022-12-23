@@ -28,7 +28,9 @@
 `cousine(X, Y) :- femme(X), parent(Z, X), parent(T, Y), frere(Z, T), soeur(T, Z), X\==Y.`-->quelque soit X, Y, Z, T : X est une femme et Z est le parent de X et T est le parent d'Y et Z est le frere de T et T est la soeur de Z d'ou X\==Y implique que X est la cousine d'Y.
 
 ### 2.3 La fin de la solitude (2 points)
-1. 
+1. `personne(1,sam,180,brun,27).`
+`gout(1,rap,action,basket).`
+`recherche(1,167,blonde,27).`
 2. `convient_physiquement(X,Y) :- personne(N, Y, _, _, _), recherche(N,T,C,A), personne(_, X, T,C,A), X\==Y.` --> Quelque soit X, Y, les noms de deux personnes différentes : on récupère le numéro de la personne nommée Y et on s'en sert pour avoir ses goûts. On les compare aux caractéristiques de la personne dont le nom est X. Ce qui se traduit par X *plaît physiquement* à Y.
 `ont_meme_gouts(X,Y) :- gout(N1,M,L,S), gout(N2,M,L,S), personne(N1,X,_,_,_),personne(N2,Y,_,_,_), X\==Y.` 
 --> Quelque soit X, Y, les noms de deux personnes différentes : on compare les goûts de deux personnes identifiés par leurs numéros, et on s'en sert pour récupérer leur nom. Ainsi, X et Y ont les *mêmes goûts*.
