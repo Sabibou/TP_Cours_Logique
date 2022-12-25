@@ -97,13 +97,13 @@ On a alors le prédicat suivant :
 --> Ce prédicat calcule **A(m,n)** avec A étant la fonction d'Ackermann et n,m deux entiers positifs. Ici, R est la variable qui acceuille le résultat. Notre cran d'arrêt est : si m=0, A(m,n)=n+1. Pour tout N>0 et M>0, on obtient le résultat de façon récursive.  
 
 ### 3.2 Graphes dirigés acycliques (3 points)
-1.`chemin-oriente(X,X) :- sommet(X).`  
-`  chemin-oriente(X,Y) :- arete(X,Y).`  
-`  chemin-oriente(X,Y) :- chemin-oriente(X,Z), arete(Z,Y).`  
+1.`chemin_oriente(X,X) :- sommet(X).`  
+`  chemin_oriente(X,Y) :- arete(X,Y).`  
+`  chemin_oriente(X,Y) :- chemin_oriente(X,Z), arete(Z,Y).`  
 --> X et Y correspondent à deux points. On cherche à savoir s'il existe un chemin orienté entre eux. Pour cela, on regarde s'il existe une arête allant de X à Y ou alors si X=Y on regarde si X est un sommet, si ce n'est pas le cas on vérifie s'il existe des points intermédiaires, représentés ici par la variable Z, tel que X va à Z et Z va à Y.  
-2.`chemin-orienteN(X,X) :- sommet(X).`  
-`  chemin-orienteN(X,Y,1) :- arete(X,Y).`  
-`  chemin-orienteN(X, Y, N):-chemin-orienteN(X, Z, M), N is M+1, arete(Z,Y).`  
+2.`chemin_orienteN(X,X) :- sommet(X).`  
+`  chemin_orienteN(X,Y,1) :- arete(X,Y).`  
+`  chemin_orienteN(X, Y, N):-chemin_orienteN(X, Z, M), N is M+1, arete(Z,Y).`  
 --> on a le même principe que la question d'avant hormis qu'ici on cherche à savoir la longueur du chemin, stockée dans la variable N. Si X va directement à Y alors N=1, sinon à chaque point intermédiaire on incréméente N de 1. Dans le cas où X=Y, alors on regarde si X est un sommet. La taille du chemin sera alors de 0. Si jamais il n'existe aucun chemin orienté allant de X à Y alors N=0.   
 3.`chemin(X,X):- sommet(X).`  
 `  chemin(X,Y) :- arete(X,Y).`  
