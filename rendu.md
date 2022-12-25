@@ -1,6 +1,6 @@
 # Eldis YMERAJ- #22015179
 # Rodrigo FERREIRA RODRIGUES-#22100697
-# Salman ABIBOU- #21913053
+# M'Hammed Salmân ABIBOU- #21913053
 # `TP LOGIQUE` 
 ---
 ## 2. Requête et base de connaissances (8 points)
