@@ -26,35 +26,35 @@
 `frere(X, Y) :- homme(X), parent(Z, X), parent(Z, Y), X\==Y.`--> quelque soit X, Y, Z : X est un homme, Z est un parent de X, Z est aussi un parent d'Y et X est different d'Y. Ce qui implique que X est le frère d'Y.  
 5. `cousin(X, Y) :-  homme(X), parent(Z, X), parent(T, Y), frere(Z, T), soeur(T, Z), X\==Y.`-->quelque soit X, Y, Z, T : X est un homme et Z est le parent de X et T est le parent d'Y et Z est le frere de T et T est la soeur de Z d'ou X\==Y implique que X est le cousin d'Y.  
 `cousine(X, Y) :- femme(X), parent(Z, X), parent(T, Y), frere(Z, T), soeur(T, Z), X\==Y.`-->quelque soit X, Y, Z, T : X est une femme et Z est le parent de X et T est le parent d'Y et Z est le frere de T et T est la soeur de Z d'ou X\==Y implique que X est la cousine d'Y.  
-6. Voici toutes les relations de parenté entre les personnes sous la forme d'un graphe :
+6. Voici toutes les relations de parenté entre les personnes sous la forme d'un graphe :  
 maxime est le **père** de catherine, olivia;
- emmanuelle est la **mère** de catherine, olivia;
- remy est le **père** de claude;
- catherine est la **mère** de claude;
- yves est le **père** de aure et charlotte;
- olivia est la **mère** de aure et charlotte;
- pierre est le **père** de samuel, hugo, pauline, paul et megane;
- aure est la **mère** de samuel, hugo, pauline, paul et megane;
- charlotte est la **mère** de melanie et antoine;
- eric est le **père** de melanie;
- didier est le **père** d'antoine;
- aurelien et melodie sont les **parents** d'emmanuel;
- jaques et aurelie sont les **parents** de caroline;
- franc et beatrice sont les **parents** de florent;
- dominic et severine sont les **parents** de mireille et simon;
- olivier et helene sont les **parents** d'edith et xavier;
- lucas est le **père** d'anne et josephine;
- antonine est la **mère** d'anne;
- marion est la **mère** de josephine;
- xavier et mireille sont les **parents** de luc et frederic;
- simon et edith sont les **parents** de lisa et alian;
- florent et mireille sont les **parents** de jeanne;
- caroline et emmanuel sont les **parents** d'oscar;
- oscar et jeanne sont les **parents** de jean, elodie, monica et brigitte;
- vincent et lisa sont les **parents** de louis;
- allain et marie sonnt les **parents** d'alexandre;
- frederic et louise sont les **parents** de claire et jules;
- luc et anne sont les **parents** de francoise et julie.
+emmanuelle est la **mère** de catherine, olivia;
+remy est le **père** de claude;
+catherine est la **mère** de claude;
+yves est le **père** de aure et charlotte;
+olivia est la **mère** de aure et charlotte;
+pierre est le **père** de samuel, hugo, pauline, paul et megane;
+aure est la **mère** de samuel, hugo, pauline, paul et megane;
+charlotte est la **mère** de melanie et antoine;
+eric est le **père** de melanie;
+didier est le **père** d'antoine;
+aurelien et melodie sont les **parents** d'emmanuel;
+jaques et aurelie sont les **parents** de caroline;
+franc et beatrice sont les **parents** de florent;
+dominic et severine sont les **parents** de mireille et simon;
+olivier et helene sont les **parents** d'edith et xavier;
+lucas est le **père** d'anne et josephine;
+antonine est la **mère** d'anne;
+marion est la **mère** de josephine;
+xavier et mireille sont les **parents** de luc et frederic;
+simon et edith sont les **parents** de lisa et alain;
+florent et mireille sont les **parents** de jeanne;
+caroline et emmanuel sont les **parents** d'oscar;
+oscar et jeanne sont les **parents** de jean, elodie, monica et brigitte;
+vincent et lisa sont les **parents** de louis;
+alain et marie sonnt les **parents** d'alexandre;
+frederic et louise sont les **parents** de claire et jules;
+luc et anne sont les **parents** de francoise et julie.
 ![](./Relations_de_parente.svg)
 ### 2.3 La fin de la solitude (2 points)
 1. `personne(1,sam,180,brun,27).`  
